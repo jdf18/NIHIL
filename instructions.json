@@ -1,0 +1,108 @@
+{
+  "parameters": [
+    {
+      "name":   "8-bit Registers",
+      "symbol": "R",
+      "values": ["A","B","C","D","E","F","G","H","TL","TH"]
+    },
+    {
+      "name":   "16-bit Registers",
+      "symbol": "A",
+      "values": ["AB","CD","EF","GH","PC","TX","IA","IC"]
+    },
+    {
+      "name":   "Port",
+      "symbol": "P",
+      "values": ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"]
+    },
+    {
+      "name":   "4-bit Location",
+      "symbol": "L4",
+      "values": {"type":"int", "bits":4}
+    },
+    {
+      "name":   "8-bit Location",
+      "symbol": "L8",
+      "values": {"type":"int", "bits":8}
+    },
+    {
+      "name":   "8-bit Immediate",
+      "symbol": "#8",
+      "values": {"type":"int", "bits":8}
+    }
+  ],
+  "instructions": [
+    {
+      "name":        "Hardware no-op",
+      "description": "Hardware injected no-operation",
+      "assembly":    ["hnop"],
+      "category":    "Misc",
+      "opcode":      "0x0000",
+      "rom address": 0
+    },
+    {
+      "name":        "Software no-op",
+      "description": "Software no-operation",
+      "assembly":    ["nop"],
+      "category":    "Misc",
+      "opcode":      "0x0001",
+      "rom address": 1
+    },
+    {
+      "name":        "Enter interrupt",
+      "description": "Store proram counter and switch to executing the interrupt",
+      "assembly":    ["eni"],
+      "category":    "Flow",
+      "opcode":      "0x0002",
+      "rom address": 2
+    },
+    {
+      "name":        "Exit interrupt",
+      "description": "Restore proram counter and switch to normal execution",
+      "assembly":    ["exi"],
+      "category":    "Flow",
+      "opcode":      "0x0003",
+      "rom address": 3
+    },
+    {
+      "name":        "Clear interrupt enable flag",
+      "description": "Set the interrupt enable flag to 0",
+      "assembly":    ["cli"],
+      "category":    "Flag",
+      "opcode":      "0x0004",
+      "rom address": 4
+    },
+    {
+      "name":        "Set interrupt enable flag",
+      "description": "Set the interrupt enable flag to 1",
+      "assembly":    ["sti"],
+      "category":    "Flag",
+      "opcode":      "0x0005",
+      "rom address": 5
+    },
+    {
+      "name":        "Reset carry flag",
+      "description": "Set the carry flag to 0",
+      "assembly":    ["rsc"],
+      "category":    "Flag",
+      "opcode":      "0x0006",
+      "rom address": 6
+    },
+    {
+      "name":        "Set carry flag",
+      "description": "Set the carry flag to 1",
+      "assembly":    ["stc"],
+      "category":    "Flag",
+      "opcode":      "0x0007",
+      "rom address": 7
+    },
+    {
+      "name":        "Complement carry flag",
+      "description": "Inverts the carry flag",
+      "assembly":    ["cmc"],
+      "category":    "Flag",
+      "opcode":      "0x0008",
+      "rom address": 8
+    },
+  ]
+}
